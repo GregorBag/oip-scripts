@@ -25,8 +25,8 @@ while True:
         num += 1
         print(num, dec2bin(num))
         time.sleep(sleep_time)
-    if GPIO.input(up) and num > 0:
+    if GPIO.input(down) and num > 0:
         num -= 1
         print(num, dec2bin(num))
         time.sleep(sleep_time)
-    GPIO.output(leds, dec2bin(num))
+    GPIO.output(reversed(leds), dec2bin(num))
