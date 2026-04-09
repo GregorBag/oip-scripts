@@ -3,7 +3,8 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 
-leds = [24, 22, 23, 27, 17, 25, 12, 16]
+leds = reversed([24, 22, 23, 27, 17, 25, 12, 16])
+print(leds)
 GPIO.setup(leds, GPIO.OUT)
 
 GPIO.output(leds, 0)
@@ -29,4 +30,4 @@ while True:
         num -= 1
         print(num, dec2bin(num))
         time.sleep(sleep_time)
-    GPIO.output(reversed(leds), dec2bin(num))
+    GPIO.output(leds, dec2bin(num))
