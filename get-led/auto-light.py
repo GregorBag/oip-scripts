@@ -7,7 +7,7 @@ led = 26
 GPIO.setup(led, GPIO.OUT)
 
 foto_trans = 6
-GPIO.setup(led, GPIO.IN)
+GPIO.setup(foto_trans, GPIO.IN)
 
 state = 1
 
