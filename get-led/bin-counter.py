@@ -20,13 +20,19 @@ def dec2bin(value):
     return [int(element) for element in bin(value)[2:].zfill(8)]
 
 sleep_time = 0.2
+max = 255
+min = 0
 
 while True:
-    if GPIO.input(up) and num < 255:
+    if GPIO.input(up) and GPIO.input(down):
+        num = max
+        print(num, dec2bin(num))
+        time.sleep(sleep_time)
+    elif GPIO.input(up) and num < max:
         num += 1
         print(num, dec2bin(num))
         time.sleep(sleep_time)
-    if GPIO.input(down) and num > 0:
+    elif GPIO.input(down) and num > min:
         num -= 1
         print(num, dec2bin(num))
         time.sleep(sleep_time)
