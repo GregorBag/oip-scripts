@@ -12,7 +12,6 @@ GPIO.setup(foto_trans, GPIO.IN)
 state = 1
 
 while True:
-    if GPIO.input(foto_trans):
-        state = not state
-        GPIO.output(led, state)
-        time.sleep(0.2)
+    state = not GPIO.input(foto_trans)
+    GPIO.output(led, state)
+    time.sleep(0.2)
