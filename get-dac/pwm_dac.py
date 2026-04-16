@@ -10,6 +10,7 @@ class PWM_DAC:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.gpio_pin, GPIO.OUT, initial = 0)
         self.pwm = GPIO.PWM(gpio_pin, pwm_frequency)
+        self.pwm.start(0)
 
     def deinit(self):
         GPIO.output(self.gpio_pin, 0)
@@ -23,12 +24,12 @@ class PWM_DAC:
     
         procent = voltage / self.dynamic_range * 100
         if self.verbose:
-            print(f"Коэффициент заполнения: {k:.1f}%")
+            print(f"Коэффициент заполнения: {procent:.1f}%")
         self.pwm.ChangeDutyCycle(procent)
 
 if __name__ == "__main__":
     try:
-        dac = PWM_DAC(16, 500, 3.290, True)
+        dac = PWM_DAC(16, 500, 2.4, True)
         
         while True:
             try:
