@@ -37,15 +37,13 @@ class MCP4725:
         self.set_number(int(voltage / self.dynamic_range * 4095))
 
 if __name__ == "__main__":
-    dac = MCP4725(5.22, verbose=True)
     try:
+        dac = MCP4725(4, verbose=True)
         while True:
             try:
                 voltage = float(input("\nВведите напряжение (в вольтах): "))
                 dac.set_voltage(voltage)
             except ValueError:
                 print("Вы ввели не число. Попробуйте ещё раз.\n")
-    except KeyboardInterrupt:
-        print("Выключение...")
-    except Exception as e:
-        print(f"Неизвестная ошибка: \"[{e.__class__.__name__}]: {e.args if len(e.args) > 0 else '<no args>'}\"")
+    finally:
+        dac.deinit()
