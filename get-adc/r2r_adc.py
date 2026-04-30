@@ -48,7 +48,7 @@ class R2R_ADC:
 
 if __name__ == "__main__":
     try:
-        adc = R2R_ADC(3.0)
+        adc = R2R_ADC(3.29)
         while True:
             try:
                 print(f"Напряжение: {adc.get_sc_voltage():.3f} В")
