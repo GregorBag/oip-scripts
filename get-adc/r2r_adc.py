@@ -67,7 +67,7 @@ if __name__ == "__main__":
         while True:
             try:
                 print(f"Напряжение: {adc.get_sar_voltage():.3f} В")
-                sleep(.25)
+                sleep(0.05)
             except ValueError:
                 print("Вы ввели не число. Попробуйте ещё раз.\n")
     finally:
