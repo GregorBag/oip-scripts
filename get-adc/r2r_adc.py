@@ -45,7 +45,7 @@ class R2R_ADC:
     def get_sc_voltage(self):
         return self.dynamic_range * self.sequential_counting_adc() / 255
     
-    def successive_approximation_adc(self) -> int:
+    def successive_approximation_adc(self):
         left, right = 0, 256
         while left < right - 1:
             middle = (left + right) // 2
@@ -57,8 +57,8 @@ class R2R_ADC:
                 left = middle
         return left
 
-    def get_sar_voltage(self) -> float:
-        return self.dynrange * self.successive_approximation_adc() / 255
+    def get_sar_voltage(self):
+        return self.dynamic_range * self.successive_approximation_adc() / 255
 
 
 if __name__ == "__main__":
